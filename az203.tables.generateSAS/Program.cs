@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Azure.Cosmos.Table;
+using Microsoft.Extensions.Configuration;
 
 namespace az203.tables.generateSAS
 {
@@ -7,6 +8,7 @@ namespace az203.tables.generateSAS
     {
         static void Main(string[] args)
         {
+            var config = ConfiguratonBuilder
             var storageAccount = CloudStorageAccount.Parse(
                 "DefaultEndpointsProtocol=https;AccountName=az203stor2019;AccountKey=3xl8YlFS2Lk6VRNXRJiYvuiIiR8QHb/rD8T1Sp3U1ZXHZlUqwYjTBakJlMZWutq+xkuJrduRYMxr4N272X7a+Q==;EndpointSuffix=core.windows.net");
             var tableClient = storageAccount.CreateCloudTableClient();
