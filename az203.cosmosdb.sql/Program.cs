@@ -1,5 +1,4 @@
 ﻿using Microsoft.Azure.Cosmos;
-using Microsoft.Extensions.Configuration;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,10 +15,10 @@ namespace az203.cosmosdb.sql
             RunContainers().Wait();
             //RunDocuments().Wait();
             QueryDocuments().Wait();
-            LinqQueryDocuments().Wait();
+            LinqQueryDocuments()
         }
 
-        private static async Task LinqQueryDocuments()
+        private static void LinqQueryDocuments()
         {
             var container = Shared.Client.GetContainer("Volcanoes", "Volcanoes");
             var q = from c in container.GetItemLinqQueryable<Volcano>(allowSynchronousQueryExecution: true)
@@ -185,30 +184,6 @@ namespace az203.cosmosdb.sql
                 var throughput = await Shared.Client.GetDatabase(db.Id).ReadThroughputAsync();
                 Console.WriteLine($"Database Id: {db.Id}; Modified: {db.LastModified}; throughput: {throughput}");
             }
-        }
-    }
-
-    internal class Volcano  
-    {
-        [JsonProperty(PropertyName = "id")]
-        public Guid Id { get; set; }
-        [JsonProperty(PropertyName = "Volcano Name")] 
-        public string Name { get; set; }
-        [JsonProperty(PropertyName = "Country")]
-        public string Country { get; set; }
-
-    }
-
-    public static class Shared
-    {
-        public static CosmosClient Client { get; set; }
-
-        static Shared()
-        {
-            var config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-            var uri = config["CosmosDbUri"];
-            var key = config["CosmosDbKey"];
-            Client = new CosmosClient(uri, key);
         }
     }
 }
