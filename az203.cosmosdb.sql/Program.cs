@@ -15,7 +15,7 @@ namespace az203.cosmosdb.sql
             RunContainers().Wait();
             //RunDocuments().Wait();
             QueryDocuments().Wait();
-            LinqQueryDocuments()
+            LinqQueryDocuments();
         }
 
         private static void LinqQueryDocuments()

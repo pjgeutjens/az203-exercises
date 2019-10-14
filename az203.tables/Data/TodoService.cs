@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Runtime.CompilerServices;
+﻿using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 using Microsoft.Azure.Cosmos.Table;
+using System.IO;
 
 namespace az203.tables.Data
 {
@@ -15,8 +12,9 @@ namespace az203.tables.Data
 
         public TodoService()
         {
+            var config = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json").Build();
             var storageAccount = CloudStorageAccount.Parse(
-                "DefaultEndpointsProtocol=https;AccountName=az203stor2019;AccountKey=3xl8YlFS2Lk6VRNXRJiYvuiIiR8QHb/rD8T1Sp3U1ZXHZlUqwYjTBakJlMZWutq+xkuJrduRYMxr4N272X7a+Q==;EndpointSuffix=core.windows.net");
+                config.GetConnectionString("TableStorage"));
             var tableClient = storageAccount.CreateCloudTableClient();
             
             _todoTable = tableClient.GetTableReference("todo");
