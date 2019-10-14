@@ -5,6 +5,7 @@ project.lock.json
 *.pyc
 nupkg/
 **/appsettings.json
+[Pp]ackages/
 
 # Visual Studio Code
 .vscode
