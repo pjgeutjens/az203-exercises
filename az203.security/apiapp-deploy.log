@@ -1,0 +1,18 @@
+WARNING: Webapp apiapp18382400 already exits. The command will deploy contents to the existing app
+WARNING: Updating runtime version from None to dotnetcore|2.2
+WARNING: Creating zip with contents of dir /home/pieter_geutjens/contoso-pets/src/ContosoPets.Api ...
+WARNING: Getting scm site credentials for zip deployment
+WARNING: Starting zip deployment. This operation can take a while to complete ...
+WARNING: You can launch the app at http://apiapp18382400.azurewebsites.net
+{
+  "URL": "http://apiapp18382400.azurewebsites.net",
+  "appserviceplan": "plan18382400",
+  "location": "westus",
+  "name": "apiapp18382400",
+  "os": "Windows",
+  "resourcegroup": "Learn-3bbc3d9a-8854-4d00-bf1e-af87b0ef6f2b",
+  "runtime_version": "dotnetcore|2.2",
+  "sku": "F1",
+  "src_path": "//home//pieter_geutjens//contoso-pets//src//ContosoPets.Api",
+  "version_detected": "2.2"
+}
