@@ -45,7 +45,7 @@ namespace az203.functions
         }
 
         [FunctionName("GetTodoById")]
-        public static async Task<IActionResult> GetTodoById(
+        public static IActionResult GetTodoById(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "todo/{id}")]HttpRequest req,
             [Table("todos", "TODO", "{id}", Connection = "AzureWebJobsStorage")] TodoTableEntity todo,
             ILogger log, string id)
