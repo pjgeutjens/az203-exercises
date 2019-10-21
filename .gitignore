@@ -39,3 +39,6 @@ nupkg/
 
 # Visual Studio 2015
 .vs/
+
+# custom
+**/azureauth.properties

@@ -1,0 +1,3 @@
+az group create --name az203.vm --location westeurope
+az vm create --name myVm --image win2016datacenter --resource-group az203.vm --admin-user myAdmin --admin-password myPWD
+az vm open-port --port 80 --resource-group az203.vm --name myVM
